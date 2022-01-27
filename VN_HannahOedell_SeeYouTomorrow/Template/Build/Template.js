@@ -20,7 +20,8 @@ var Template;
         let scenes = [
             // Linear
             // { id: "Einführung", scene: Introduction, name: "Introduction to FS", next: "Ende"},
-            { scene: Template.scn_testscene, name: "Test test 123" }
+            { scene: Template.scn_testscene, name: "Test test 123" },
+            //{ scene: scn_testscene2, name: "NAY 2 2 2" },
             // { scene: Scene2, name: "Scene Two" }
             // { id: "Ende", scene: End, name: "The End" }
         ];
@@ -60,6 +61,25 @@ var Template;
     }
     Template.fromRightToLeft = fromRightToLeft;
     ;
+    function anim_testanim() {
+        return {
+            start: { translation: Template.ƒS.positions.bottomleft, rotation: -20, scaling: new Template.ƒS.Position(0.5, 1.5), color: Template.ƒS.Color.CSS("white", 0.5) },
+            end: { translation: Template.ƒS.positions.bottomright, rotation: 20, scaling: new Template.ƒS.Position(1.5, 0.5), color: Template.ƒS.Color.CSS("red") },
+            duration: 8,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+        };
+    }
+    Template.anim_testanim = anim_testanim;
+    ;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    Template.sound = {
+        // music
+        backgroundTheme: "./Assets/Music/AUX_Dystopian.ogg",
+        // sound
+        click: ""
+    };
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -67,22 +87,20 @@ var Template;
         narrator: {
             name: ""
         },
-        aisaka: {
-            name: "Aisaka",
+        catblob: {
+            name: "Mr. Chattington",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "./Images/Characters/aisaka_angry.png",
-                happy: "./Images/Characters/aisaka_happy.png",
-                upset: "./Images/Characters/aisaka_upset.png"
+                normal: "./Assets/Characters/spr_blob_normal.png",
+                sleepy: "./Assets/Characters/spr_blob_sleepy.png",
+                energetic: "./Assets/Characters/spr_blob_energetic.png"
             }
         },
-        kohana: {
-            name: "Kohana",
+        catblob2: {
+            name: "catblob2",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "./Images/Characters/kohana_angry.png",
-                happy: "./Images/Characters/kohana_happy.png",
-                upset: "./Images/Characters/kohana_upset.png"
+                normal: "./Assets/Characters/spr_blob2_normal.png",
             }
         }
     };
@@ -90,13 +108,14 @@ var Template;
 var Template;
 (function (Template) {
     Template.locations = {
-        bedroom: {
-            name: "Bedroom",
-            background: "./Images/Backgrounds/Bedroom.png"
+        //1200*720
+        BG_01_test: {
+            name: "Testroom01",
+            background: "./Assets/Backgrounds/BG_PLC_01.png"
         },
-        kitchen: {
-            name: "BedroomNight",
-            background: "./Images/Backgrounds/Bedroom_Night.png"
+        BG_02_test: {
+            name: "Testroom02",
+            background: "./Assets/Backgrounds/BG_PLC_02.png"
         }
     };
 })(Template || (Template = {}));
@@ -183,21 +202,12 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    Template.sound = {
-        // music
-        backgroundTheme: "./Audio/Dystopian.ogg",
-        // sound
-        click: ""
-    };
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
     // define transitions
     Template.transitions = {
-        clock: {
-            duration: 1,
-            alpha: "./FreeTransitions/JigsawThemedTransitions/puzzle.png",
-            edge: 1
+        puzzle: {
+            duration: 3,
+            alpha: "./Assets/Transitions/tr_02.png",
+            edge: 0.1
         }
     };
 })(Template || (Template = {}));
@@ -206,7 +216,160 @@ var Template;
     async function scn_testscene() {
         console.log("Testszene");
         //hier kommt meine szene rein
+        let text = {
+            narrator: {
+                T0000: "<p>Ich bin der Narrator.</p>",
+                T0001: ""
+            },
+            catblob: {
+                T0000: "NYYAHAHAHAHAHAHA",
+                T0001: "Nya Toooo1 twos fshgsgsg"
+            }
+        };
+        // test: `test ${123} klappt`
+        // Textgeschwindigkeit
+        //ƒS.Speech.setTickerDelays(20, 2);
+        Template.ƒS.Sound.fade(Template.sound.backgroundTheme, 0.2, 0.1, true); //erste zahl lautstärke, zweite t fadein //true = loop
+        // let animationDone: Promise<void> = ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToLeft());
+        // let animationDone2: Promise<void> = ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToOutOfCanvas());
+        //  Name field
+        // dataForSave.nameProtagonist = await ƒS.Speech.getInput();
+        // console.log(dataForSave.nameProtagonist);
+        await Template.ƒS.Location.show(Template.locations.BG_01_test);
+        await Template.ƒS.update(Template.transitions.puzzle.duration, Template.transitions.puzzle.alpha, Template.transitions.puzzle.edge); //NO TRNSITION YET
+        await Template.ƒS.Character.show(Template.characters.catblob, Template.characters.catblob.pose.normal, Template.ƒS.positions.center); //position ƒS.positions.bottomcenter ODER ƒS.positionPercent(30, 100)
+        await Template.ƒS.update(1);
+        // Animationen parallel abspielen
+        await Template.ƒS.Speech.tell(Template.characters.catblob, text.catblob.T0000, true);
+        //await ƒS.Speech.tell(characters.catblob, text.catblob.T0000, false); //what iws that false?
+        //dataForSave.nameProtagonist = await ƒS.Speech.getInput();
+        //console.log(dataForSave.nameProtagonist);
+        //await ƒS.Speech.tell(characters.catblob, text.catblob.T0000 + dataForSave.nameProtagonist);
+        // LOOP Animations
+        // await ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToLeft());
+        // await ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToOutOfCanvas());
+        // Inventar
+        // ƒS.Inventory.add(items.pen);
+        // await ƒS.Inventory.open(); 
+        await Template.ƒS.Speech.tell(Template.characters.catblob, "Hi2."); //entweder vordefiniert, oder so hingeschrieben
+        // await animationDone;
+        // await animationDone2;
+        await Template.ƒS.Character.hide(Template.characters.catblob);
+        await Template.ƒS.Character.show(Template.characters.catblob2, Template.characters.catblob2.pose.normal, Template.ƒS.positions.bottomcenter); //riem fragen
+        let firstDialogueElementOptions = {
+            iSayOk: "Cat.",
+            iSayYes: "Cats.",
+            iSayNo: "Cattsss."
+        };
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, "individualCSSClass"); //bedeutet:
+        //in novel siehst du fenster, kannst elemente klicken, hier iwrd es aufgerufen
+        //in css stylen (individualCSSClass)
+        switch (firstDialogueElement) {
+            case firstDialogueElementOptions.iSayOk:
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Cat is neat.");
+                // return "Ende";
+                break;
+            case firstDialogueElementOptions.iSayYes:
+                await Template.ƒS.Character.hide(Template.characters.catblob);
+                await Template.ƒS.Location.show(Template.locations.BG_02_test);
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Cats has been chosen.");
+                Template.ƒS.Character.animate(Template.characters.catblob, Template.characters.catblob.pose.sleepy, Template.anim_testanim());
+                await Template.ƒS.Character.show(Template.characters.catblob2, Template.characters.catblob2.pose.normal, Template.ƒS.positions.bottomleft);
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Shown sleepy blob.");
+                break;
+            case firstDialogueElementOptions.iSayNo:
+                //dataForSave.points += 10;
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "We said nay and change the scene");
+                await Template.ƒS.Character.hide(Template.characters.catblob2);
+                return Template.scn_testscene2();
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.characters.catblob, "Thank you human!");
+        Template.ƒS.Sound.fade(Template.sound.backgroundTheme, 0, 1);
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.update(1);
+        // if (dataForSave.points === 100) {
+        //   return End();
+        // }
+        // return "Ende";
+        // return End();
     }
     Template.scn_testscene = scn_testscene;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function scn_testscene2() {
+        console.log("Testszene2");
+        //hier kommt meine szene rein
+        let text = {
+            narrator: {
+                T0000: "<p>Ich bin der Narrator.</p>",
+                T0001: ""
+            },
+            catblob: {
+                T0000: "NYYAHAHAHAHAHAHA",
+                T0001: "Nya Toooo1 twos fshgsgsg"
+            }
+        };
+        Template.ƒS.Sound.fade(Template.sound.backgroundTheme, 0, 1);
+        await Template.ƒS.Location.show(Template.locations.BG_01_test);
+        await Template.ƒS.update(Template.transitions.puzzle.duration, Template.transitions.puzzle.alpha, Template.transitions.puzzle.edge); //NO TRNSITION YET
+        await Template.ƒS.Character.show(Template.characters.catblob, Template.characters.catblob.pose.normal, Template.ƒS.positions.center); //position ƒS.positions.bottomcenter ODER ƒS.positionPercent(30, 100)
+        await Template.ƒS.update(1);
+        // Animationen parallel abspielen
+        await Template.ƒS.Speech.tell(Template.characters.catblob, text.catblob.T0000, true);
+        //await ƒS.Speech.tell(characters.catblob, text.catblob.T0000, false); //what iws that false?
+        //dataForSave.nameProtagonist = await ƒS.Speech.getInput();
+        //console.log(dataForSave.nameProtagonist);
+        //await ƒS.Speech.tell(characters.catblob, text.catblob.T0000 + dataForSave.nameProtagonist);
+        // LOOP Animations
+        // await ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToLeft());
+        // await ƒS.Character.animate(characters.aisaka, characters.aisaka.pose.happy, fromRightToOutOfCanvas());
+        // Inventar
+        // ƒS.Inventory.add(items.pen);
+        // await ƒS.Inventory.open(); 
+        await Template.ƒS.Speech.tell(Template.characters.catblob, "Hi2."); //entweder vordefiniert, oder so hingeschrieben
+        // await animationDone;
+        // await animationDone2;
+        await Template.ƒS.Character.hide(Template.characters.catblob);
+        let firstDialogueElementOptions = {
+            iSayOk: "Cat.",
+            iSayYes: "Cats.",
+            iSayNo: "Cattsss."
+        };
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, "individualCSSClass"); //bedeutet:
+        //in novel siehst du fenster, kannst elemente klicken, hier iwrd es aufgerufen
+        //in css stylen (individualCSSClass)
+        switch (firstDialogueElement) {
+            case firstDialogueElementOptions.iSayOk:
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Cat is neat.");
+                // return "Ende";
+                break;
+            case firstDialogueElementOptions.iSayYes:
+                await Template.ƒS.Character.hide(Template.characters.catblob);
+                await Template.ƒS.Location.show(Template.locations.BG_02_test);
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Cats has been chosen.");
+                Template.ƒS.Character.animate(Template.characters.catblob, Template.characters.catblob.pose.sleepy, Template.anim_testanim());
+                await Template.ƒS.Character.show(Template.characters.catblob2, Template.characters.catblob2.pose.normal, Template.ƒS.positions.bottomleft);
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "Shown sleepy blob.");
+                break;
+            case firstDialogueElementOptions.iSayNo:
+                //dataForSave.points += 10;
+                await Template.ƒS.Character.show(Template.characters.catblob2, Template.characters.catblob2.pose.normal, Template.ƒS.positions.bottomcenter);
+                await Template.ƒS.Speech.tell(Template.characters.catblob, "We said nay and change the scene");
+                return scn_testscene2();
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.characters.catblob, "Thank you human!");
+        Template.ƒS.Sound.fade(Template.sound.backgroundTheme, 0, 1);
+        Template.ƒS.Character.hideAll();
+        await Template.ƒS.update(1);
+        // if (dataForSave.points === 100) {
+        //   return End();
+        // }
+        // return "Ende";
+        // return End();
+    }
+    Template.scn_testscene2 = scn_testscene2;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

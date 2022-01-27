@@ -12,28 +12,33 @@ declare namespace Template {
 declare namespace Template {
     function fromRightToOutOfCanvas(): ƒS.AnimationDefinition;
     function fromRightToLeft(): ƒS.AnimationDefinition;
+    function anim_testanim(): ƒS.AnimationDefinition;
+}
+declare namespace Template {
+    let sound: {
+        backgroundTheme: string;
+        click: string;
+    };
 }
 declare namespace Template {
     let characters: {
         narrator: {
             name: string;
         };
-        aisaka: {
+        catblob: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
+                normal: string;
+                sleepy: string;
+                energetic: string;
             };
         };
-        kohana: {
+        catblob2: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
+                normal: string;
             };
         };
     };
@@ -42,11 +47,11 @@ declare namespace Template {
 }
 declare namespace Template {
     let locations: {
-        bedroom: {
+        BG_01_test: {
             name: string;
             background: string;
         };
-        kitchen: {
+        BG_02_test: {
             name: string;
             background: string;
         };
@@ -67,14 +72,8 @@ declare namespace Template {
     function buttonFunctionalities(_option: string): Promise<void>;
 }
 declare namespace Template {
-    let sound: {
-        backgroundTheme: string;
-        click: string;
-    };
-}
-declare namespace Template {
     let transitions: {
-        clock: {
+        puzzle: {
             duration: number;
             alpha: string;
             edge: number;
@@ -83,4 +82,7 @@ declare namespace Template {
 }
 declare namespace Template {
     function scn_testscene(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function scn_testscene2(): ƒS.SceneReturn;
 }

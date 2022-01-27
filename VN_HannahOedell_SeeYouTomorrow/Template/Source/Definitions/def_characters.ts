@@ -3,22 +3,20 @@ namespace Template{
         narrator: {
           name: ""
         },
-        aisaka: {
-          name: "Aisaka",
+        catblob: {
+          name: "Mr. Chattington",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            angry: "./Images/Characters/aisaka_angry.png",
-            happy: "./Images/Characters/aisaka_happy.png",
-            upset: "./Images/Characters/aisaka_upset.png"
+            normal: "./Assets/Characters/spr_blob_normal.png",
+            sleepy: "./Assets/Characters/spr_blob_sleepy.png",
+            energetic: "./Assets/Characters/spr_blob_energetic.png"
           }
         },
-        kohana: {
-          name: "Kohana",
+        catblob2: {
+          name: "catblob2",
           origin: ƒS.ORIGIN.BOTTOMCENTER,
           pose: {
-            angry: "./Images/Characters/kohana_angry.png",
-            happy: "./Images/Characters/kohana_happy.png",
-            upset: "./Images/Characters/kohana_upset.png"
+            normal: "./Assets/Characters/spr_blob2_normal.png",
           }
         }
       };

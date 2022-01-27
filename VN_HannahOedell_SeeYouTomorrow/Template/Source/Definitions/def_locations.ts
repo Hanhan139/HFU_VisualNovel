@@ -1,12 +1,13 @@
 namespace Template{
     export let locations = {
-        bedroom: {
-          name: "Bedroom",
-          background: "./Images/Backgrounds/Bedroom.png"
+      //1200*720
+        BG_01_test: {
+          name: "Testroom01",
+          background: "./Assets/Backgrounds/BG_PLC_01.png"
         },
-        kitchen: {
-          name: "BedroomNight",
-          background: "./Images/Backgrounds/Bedroom_Night.png"
+        BG_02_test: {
+          name: "Testroom02",
+          background: "./Assets/Backgrounds/BG_PLC_02.png"
         }
       };
 }

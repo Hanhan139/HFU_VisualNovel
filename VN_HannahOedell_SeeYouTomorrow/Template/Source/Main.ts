@@ -21,7 +21,8 @@ function start(_event: Event): void {
   let scenes: ƒS.Scenes = [ //Hier wird auf meine szenen verwiesen
     // Linear
     // { id: "Einführung", scene: Introduction, name: "Introduction to FS", next: "Ende"},
-    { scene: scn_testscene, name: "Test test 123" }
+    { scene: scn_testscene, name: "Test test 123" },
+    //{ scene: scn_testscene2, name: "NAY 2 2 2" },
     // { scene: Scene2, name: "Scene Two" }
     // { id: "Ende", scene: End, name: "The End" }
   ];
