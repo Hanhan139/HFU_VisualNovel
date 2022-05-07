@@ -1,4 +1,4 @@
-namespace Template{
+namespace VNamespace{
     //  MENU - Audio functions
 
     let volume: number = 1.0;

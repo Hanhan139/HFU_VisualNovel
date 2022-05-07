@@ -1,4 +1,4 @@
-namespace Template{
+namespace VNamespace{
     
     // define transitions
  export let transitions = {

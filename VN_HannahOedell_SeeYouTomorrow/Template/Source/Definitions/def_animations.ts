@@ -1,4 +1,4 @@
-namespace Template{
+namespace VNamespace{
     // Animationen
     
     export function fromRightToOutOfCanvas(): ƒS.AnimationDefinition {

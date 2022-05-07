@@ -1,4 +1,4 @@
-namespace Template{
+namespace VNamespace{
     // Items
 // export let items = {
 //   pen: {
