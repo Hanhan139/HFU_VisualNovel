@@ -153,7 +153,7 @@ declare namespace VNamespace {
     function func_RandomNumberRange(r_min: any, r_max: any): any;
 }
 declare namespace VNamespace {
-    let RPGcharacters: {
+    let rpgCharacters: {
         text: {
             name: string;
         };
@@ -165,8 +165,9 @@ declare namespace VNamespace {
             origin: ƒ.ORIGIN2D;
             pose: {
                 default: string;
-                sleepy: string;
-                energetic: string;
+                speak: string;
+                sus1: string;
+                sus2: string;
             };
         };
         arturia: {
@@ -181,7 +182,7 @@ declare namespace VNamespace {
     };
 }
 declare namespace VNamespace {
-    let RPGdia_Camp: {
+    let rpgDiaCamp: {
         default: {
             T_default: string;
         };
@@ -275,16 +276,40 @@ declare namespace VNamespace {
     };
 }
 declare namespace VNamespace {
-    function func_RPGRandomNumber(): any;
-    function func_RPGRandomNumberRange(r_min: any, r_max: any): any;
+    function func_RPGRandomNumber(): number;
+    function func_RPGRandomNumberRange(min?: number, max?: number): number;
     function fun_AwaitSpeech(charpath?: string, insert?: string): Promise<void>;
-    function fun_PrintBlockKeys(keys?: {
-        T_default: string;
-    }): Promise<void>;
-    function fun_PrintBlockSpeech(path?: {
-        T_default: string;
-    }): Promise<void>;
+    function fun_PrintBlockKeys(keys?: Object): Promise<void>;
+    function fun_PrintBlockSpeech(path?: Object): Promise<void>;
     function anim_CharJoin(): ƒS.AnimationDefinition;
+}
+declare namespace VNamespace {
+    let rpgLocations: {
+        BG_camp: {
+            name: string;
+            background: string;
+        };
+        BG_companions: {
+            name: string;
+            background: string;
+        };
+        BG_fire: {
+            name: string;
+            background: string;
+        };
+        BG_portal: {
+            name: string;
+            background: string;
+        };
+        BG_ventureout: {
+            name: string;
+            background: string;
+        };
+        BG_ventureoutfurther: {
+            name: string;
+            background: string;
+        };
+    };
 }
 declare namespace VNamespace {
     function scn_RPG_camp(): ƒS.SceneReturn;

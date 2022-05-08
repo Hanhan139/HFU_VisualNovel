@@ -25,13 +25,13 @@ scene {
   height: 720px;
   display: inline-block;
   position: absolute;
-  border: 3px solid blueviolet;
+  /* border: 3px solid blueviolet; */
 }
 
 canvas {
   height: 100%;
   width: 100%;
-  border: 3px solid green;
+  /* border: 3px solid green; */
   /* margin: auto;
   vertical-align: 30%; */
   /* max-height: 100px; */

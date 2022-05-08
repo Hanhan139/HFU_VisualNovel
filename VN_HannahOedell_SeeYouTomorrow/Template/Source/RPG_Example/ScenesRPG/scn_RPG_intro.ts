@@ -1,8 +1,11 @@
-namespace VNamespace{
+namespace VNamespace {
     
-    export async function scn_RPG_intro():ƒS.SceneReturn { //Fs. um fudge story funktionen aufzurufen
+    export async function scn_RPG_intro(): ƒS.SceneReturn { //Fs. um fudge story funktionen aufzurufen
         
         console.log("RPG INTROOOOOOOO");
+
+        // await fun_PrintBlockSpeech(rpgDiaCamp.companionDialogue.amie.greeting);
+
         // await ƒS.Location.show(locations.BG_PC_FUDGE);
         // await ƒS.update(1, "./Assets/Transitions/TR_dots_default.png", 1);
         

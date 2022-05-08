@@ -1,32 +1,34 @@
 namespace VNamespace {
 
-    export function func_RPGRandomNumber() {
-        return func_RandomNumberRange(0, 10)
-    };
+    export function func_RPGRandomNumber(): number {
+        return func_RandomNumberRange(0, 10);
+    }
 
     //absolutely copied from https://www.codegrepper.com/code-examples/javascript/random+number+generator+in+typescript - I dunno how it does what it does, but it does
-    export function func_RPGRandomNumberRange(r_min: any, r_max: any) {
-        r_min = Math.ceil(r_min); //Math.ceil rounds stuff up
-        r_max = Math.floor(r_max); //Guess what Math.floor does XD
-        return Math.floor(Math.random() * (r_max - r_min + 1)) + r_min; //Some suspicious math, but you end up with random numbers so ONWARD!
-    };
+    export function func_RPGRandomNumberRange(min: number = 0, max: number = 10): number {
+        min = Math.ceil(min); //Math.ceil rounds stuff up
+        max = Math.floor(max); //Guess what Math.floor does XD
+        return Math.floor(Math.random() * (max - min + 1)) + min; //Some suspicious math, but you end up with random numbers so ONWARD!
+    }
 
-    export async function fun_AwaitSpeech(charpath: string ="???", insert: string = "..."): Promise<void> {
+    //typisierung 
+
+    export async function fun_AwaitSpeech(charpath: string = "???", insert: string = "..."): Promise<void> {
         await ƒS.Speech.tell(charpath, insert, true);
-    };
+    }
 
-    export async function fun_PrintBlockKeys(keys = RPGdia_Camp.default): Promise<void> { //The thing behind = means default thing if no value beest given
+    //Object = Geschweifte klammern, Datensätze
+    export async function fun_PrintBlockKeys(keys: Object = rpgDiaCamp.default): Promise<void> { //The thing behind = means default thing if no value beest given
         for (const t in keys) {
-            await ƒS.Speech.tell(RPGcharacters.text, t);
+            await ƒS.Speech.tell(rpgCharacters.text, t);
         }
-    };
+    }
 
-    export async function fun_PrintBlockSpeech(path = RPGdia_Camp.default): Promise<void> {
+    export async function fun_PrintBlockSpeech(path: Object = rpgDiaCamp.default): Promise<void> {
         for (let diaSequence of Object.values(path)) {
-            await ƒS.Speech.tell(RPGcharacters.text, diaSequence);
-        };
-    };
-
+            await ƒS.Speech.tell(rpgCharacters.text, diaSequence); //funktion wird unterbrochen und es macht weiter
+        }
+    }
 
     //ANIMATION PRESETS
 
