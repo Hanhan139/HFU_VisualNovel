@@ -8,7 +8,7 @@ var VNamespace;
         nameProtagonist: "",
         points: 0,
         scoreeyyy: 9,
-        varHadTea: false,
+        varHadTea: false
         // started: false,
         // ended: false
     };
@@ -29,6 +29,7 @@ var VNamespace;
     let gameMenu;
     // true = offen; false = geschlossen
     let menuIsOpen = true;
+    let inventoryIsOpen = false;
     async function buttonFunctionalities(_option) {
         console.log(_option);
         switch (_option) {
@@ -70,6 +71,19 @@ var VNamespace;
                     menuIsOpen = true;
                 }
                 break;
+            case VNamespace.ƒ.KEYBOARD_CODE.I:
+                console.log("Inventory");
+                if (inventoryIsOpen) {
+                    console.log("Inventory Close");
+                    VNamespace.ƒS.Inventory.close();
+                    inventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+                }
+                else {
+                    console.log("Inventory Open");
+                    VNamespace.ƒS.Inventory.open();
+                    inventoryIsOpen = true;
+                }
+                break;
         }
     }
     // Szenenstruktur
@@ -78,9 +92,17 @@ var VNamespace;
         // Menü
         gameMenu = VNamespace.ƒS.Menu.create(VNamespace.inGameMenu, buttonFunctionalities, "gameMenu");
         // Menü zu Beginn geschlossen halten
+        //ADD STUFF FROM THE BEGINNING TO INVENTORY
+        VNamespace.ƒS.Inventory.add(VNamespace.inventory.apple);
+        let x = 0;
+        while (x <= 6) {
+            VNamespace.ƒS.Inventory.add(VNamespace.inventory.catblob);
+            x++;
+        }
+        //await ƒS.Inventory.open;
         buttonFunctionalities("Close");
         let scenes = [
-            { scene: VNamespace.scn_Title_1, name: "A new day, a new try." },
+            { scene: VNamespace.scn_Title_1, name: "A new day, a new try." }
             //{ scene: scn_testscene, name: "Test test 123" }
         ];
         let uiElement = document.querySelector("[type=interface]");
@@ -88,6 +110,17 @@ var VNamespace;
         // start the sequence
         VNamespace.ƒS.Progress.go(scenes);
     }
+    // ƒS.Inventory.add();
+    // ƒS.Inventory.add(apple, "apple", characters.catblob.pose.normal);
+    // ***INVENTORY-TASK***
+    // inventory: {
+    //   apple: { isininventory: false, itemname: "Apfel" },
+    //   pear: { isininventory: true, itemname: "Birne" },
+    //   cat: { isininventory: true, itemname: "Katze" },
+    //   strawberry: { isininventory: false, itemname: "Erdbeere" },
+    //   potatoe: { isininventory: true, itemname: "Kartoffel" },
+    //   letter: { isininventory: true, itemname: "Einkaufszettel" },
+    //   },
 })(VNamespace || (VNamespace = {}));
 var VNamespace;
 (function (VNamespace) {
@@ -173,6 +206,23 @@ var VNamespace;
             pose: {
                 normal: "./Assets/Characters/spr_blob2_normal.png",
             }
+        }
+    };
+})(VNamespace || (VNamespace = {}));
+var VNamespace;
+(function (VNamespace) {
+    VNamespace.inventory = {
+        apple: {
+            name: "Apfel",
+            description: "fruit",
+            image: VNamespace.characters.catblob2.pose.normal,
+            static: true
+        },
+        catblob: {
+            name: "Catblob",
+            description: "Maybe edible... you don't know unless you try...",
+            image: VNamespace.characters.catblob.pose.normal,
+            static: false
         }
     };
 })(VNamespace || (VNamespace = {}));
@@ -848,6 +898,8 @@ var VNamespace;
         console.log("Scene Day 01");
         await VNamespace.ƒS.Speech.tell(VNamespace.characters.catblob, "Day 01 bgtest.");
         VNamespace.dataForSave.scoreeyyy += 1;
+        VNamespace.dataForSave.nameProtagonist = await VNamespace.ƒS.Speech.getInput();
+        console.log(VNamespace.dataForSave.nameProtagonist);
         let z = 0;
         let y = 10;
         while (y > 0) {
@@ -856,7 +908,6 @@ var VNamespace;
             y -= 1;
             //ignore this this just me printing a buncha numbers to test n see what I get; Z ends up being a number with two digits and a bunch of .4z2i525673ssssss
         }
-        ;
         switch (z) {
             case 0:
                 await VNamespace.ƒS.Speech.tell(VNamespace.characters.catblob, "EYOOOO 0");
@@ -876,7 +927,6 @@ var VNamespace;
                 await VNamespace.ƒS.Speech.tell(VNamespace.characters.narrator, "Well it gonna be hard to get INTo those cases with a float, eh?");
                 break;
         }
-        ;
         let firstDialogueElementOptions = {
             dia_Yes: "Yes.",
             dia_No: "No."

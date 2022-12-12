@@ -9,6 +9,8 @@ namespace VNamespace {
     await ƒS.Speech.tell(characters.catblob, "Day 01 bgtest.");
 
     dataForSave.scoreeyyy += 1;
+    dataForSave.nameProtagonist = await ƒS.Speech.getInput();
+    console.log(dataForSave.nameProtagonist);
 
     let z = 0;
     let y = 10;
@@ -17,7 +19,7 @@ namespace VNamespace {
       console.log(z);
       y -= 1;
       //ignore this this just me printing a buncha numbers to test n see what I get; Z ends up being a number with two digits and a bunch of .4z2i525673ssssss
-    };
+    }
 
     switch (z) {
       case 0:
@@ -37,7 +39,7 @@ namespace VNamespace {
       default:
         await ƒS.Speech.tell(characters.narrator, "Well it gonna be hard to get INTo those cases with a float, eh?");
         break;
-    };
+    }
 
     let firstDialogueElementOptions = { //selbst benennen Firstdialogblob
       dia_Yes: "Yes.",

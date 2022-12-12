@@ -8,48 +8,30 @@ html, body {
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 2.3vmin;
   background-color: black;
-  /* background-color: #000000; */
   resize: none;
-  /* background-image: url("Images/Backgrounds/starry.gif"); */
 }
 
 scene {
-  /* width: 1280px;
-  height: 720px; */
-  /* width: 100%;
-  height: 100%;
-  border: 3px solid blueviolet;
-  display: inline-block;
-  position: absolute; */
   width: 1280px;
   height: 720px;
   display: inline-block;
   position: absolute;
-  /* border: 3px solid blueviolet; */
 }
 
 canvas {
   height: 100%;
   width: 100%;
   /* border: 3px solid green; */
-  /* margin: auto;
-  vertical-align: 30%; */
-  /* max-height: 100px; */
-  /* height: 100%; */
-  /* margin-bottom: 20vh; */
-  /* position: relative; */
-  /* width: 100%;
-  height: 100%; */
 }
 
 name {
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 2vmin;
-  /* font-size: 100%; */
   font-weight: bold;
   display: block;
+  position: absolute;
   color: rgb(98, 113, 161);
-  margin-top: 0.2vmin;;
+  margin-top: 0vmin;
   padding: 2%;
   padding-left: 10%;
   background-color: rgb(0, 0, 0);
@@ -66,14 +48,16 @@ speech {
 }
 
 speech content {
-  width: 100%;
+  width: 80%;
   height: auto;
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 2.3vmin;
-  /* font-size: 130%; */
   color: rgb(206, 245, 246);
-  /* padding-top: 10%; Doesn't work - why? */
-  padding-left: 11%;
+  position: absolute;
+  padding-left: 10%;
+  top: 35%;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .CssChoices {
@@ -88,7 +72,7 @@ speech content {
 #StartingImage { 
   width: 100%;
   height: auto;
-  display: block;
+  /* display: block; */
   background-color: 1C1C1C;
   border: 20px;
   border-color: rgb(146, 110, 31);
@@ -101,4 +85,29 @@ speech content {
   height: auto;
   bottom: center;
   right: 0%;
+}
+
+.StartInformation {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: rgb(201, 106, 32);
+  width: 100%;
+  text-align: justify;
+}
+
+
+/* ------ Inventar ----------- */
+dialog[type = "inventory"] > ul > li > amount {
+  width: 50%;
+  background-color: darkblue;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+}
+
+dialog[type = "inventory"] {
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: none;
+  padding: 20%;
 }

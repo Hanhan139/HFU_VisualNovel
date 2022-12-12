@@ -7,8 +7,8 @@ namespace VNamespace {
   export let dataForSave = {
     nameProtagonist: "",
     points: 0,
-    scoreeyyy: 9, 
-    varHadTea: false,
+    scoreeyyy: 9,
+    varHadTea: false
     // started: false,
     // ended: false
   };
@@ -33,6 +33,7 @@ namespace VNamespace {
 
   // true = offen; false = geschlossen
   let menuIsOpen: boolean = true;
+  let inventoryIsOpen: boolean = false;
 
   async function buttonFunctionalities(_option: string): Promise<void> {
     console.log(_option);
@@ -76,6 +77,18 @@ namespace VNamespace {
           menuIsOpen = true;
         }
         break;
+      case ƒ.KEYBOARD_CODE.I:
+        console.log("Inventory");
+        if (inventoryIsOpen) {
+          console.log("Inventory Close");
+          ƒS.Inventory.close();
+          inventoryIsOpen = false; // wenn ich m drücke, und das menu geöffnet is, schließe das menu. wenn es offen ist:
+        } else {
+          console.log("Inventory Open");
+          ƒS.Inventory.open();
+          inventoryIsOpen = true;
+        }
+        break;
     }
   }
 
@@ -85,9 +98,19 @@ namespace VNamespace {
     // Menü
     gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
     // Menü zu Beginn geschlossen halten
+
+    //ADD STUFF FROM THE BEGINNING TO INVENTORY
+    ƒS.Inventory.add(inventory.apple);
+    let x = 0;
+    while (x <= 6){
+      ƒS.Inventory.add(inventory.catblob);
+      x++;
+    }
+    //await ƒS.Inventory.open;
+
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [ //Hier wird auf meine szenen verwiesen // Linear
-      { scene: scn_Title_1, name: "A new day, a new try." },
+      { scene: scn_Title_1, name: "A new day, a new try." }
       //{ scene: scn_testscene, name: "Test test 123" }
     ];
 
@@ -97,5 +120,4 @@ namespace VNamespace {
     // start the sequence
     ƒS.Progress.go(scenes);
   }
-
 }

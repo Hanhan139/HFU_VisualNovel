@@ -9,28 +9,33 @@
   <script src="FudgeStory/FudgeStory.js"></script>
   <script src="./Build/Template.js"></script>
   <title>Fudge Story Template</title>
- <!-- <splash src="./Assets/Backgrounds/BG_Title_1.png"/> -->
- <!--GOOGLE FONTS-->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@700&family=Rubik&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <scene>
     <dialog type="splash" open>
+      <p class="StartInformation"> Hannah Ödell - DIM 03 - Visual Novel - Bei Riem Yasin - SS2022</p>
       <p>
         <img id="FudgeStoryLogo" theme="light" />
         <!-- Design your splash screen here. Reposition and rescale the logo above, but do not remove. -->
         <img id="StartingImage" src="./Assets/Backgrounds/BG_FUD_General.png" alt="Starting Image HERE Look how pretty, 10/10 image">
       </p>
+      <p> </p>
     </dialog>
     <canvas></canvas>
 
     <speech>
       <name></name>
-      <content>"See you tomorrow"</content>
+      <content></content>
     </speech>
+
+    <!-- ---- Inventar ----- -->
+    <dialog type="inventory">
+      <h1>INVENTORY </h1>
+      <p><h4>Push 'I' to  <button type="button">close</button> the inventory</h4> 
+     </p>
+      <ul></ul>
+    </dialog>
 
     <dialog type="text">
 

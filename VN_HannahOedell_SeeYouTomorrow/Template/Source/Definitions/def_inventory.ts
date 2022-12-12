@@ -1,10 +1,16 @@
-namespace VNamespace{
-    // Items
-// export let items = {
-//   pen: {
-//     name: "Roter Buntstift",
-//     description: "A red pen",
-//     image: "./Images/Items/redPen.png"
-//   }
-// };
+namespace VNamespace {
+    export let inventory = {
+        apple: {
+        name: "Apfel",
+        description: "fruit",
+        image: characters.catblob2.pose.normal,
+        static: true
+        },
+        catblob: {
+            name: "Catblob",
+            description: "Maybe edible... you don't know unless you try...",
+            image: characters.catblob.pose.normal,
+            static: false
+            }
+    };
 }

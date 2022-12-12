@@ -59,6 +59,20 @@ declare namespace VNamespace {
     };
 }
 declare namespace VNamespace {
+    let inventory: {
+        apple: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        catblob: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+    };
 }
 declare namespace VNamespace {
     let locations: {
