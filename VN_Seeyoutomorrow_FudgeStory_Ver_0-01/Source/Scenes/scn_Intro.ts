@@ -7,12 +7,15 @@ namespace VNamespace{
     //Springcleaning
         await func_SpringCleaning();
 
-        // await ƒS.Location.show(backgrounds.BG_Fade);    
-        // await ƒS.update(1);
-
-        //ƒS.Character.show(characters.HER, characters.HER.pose.default_normal, ƒS.positions.bottomcenter);
-        //await ƒS.Character.animate(characters.HER, characters.HER.pose.default_happy, anim_colorChangeBlackIn());
-        //await ƒS.Character.animate(characters.HER, characters.HER.pose.default_happy, anim_colorChangeBlackIn());
+        await func_speechWithAudio(characters.HER.name, "....", sound.voices.default[0]);
+        await func_speechWithAudio(characters.HER.name, " ");
+        await func_speechWithAudio(characters.HER.name, "........", "CHAOS");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
+        await func_speechWithAudio(characters.HER.name, "1 2 3 Test test TEEEEEST. ...Do you think it works now?", "HER");
 
     //Actual Scene
         console.log("Entered Scene: Introduction");
@@ -53,9 +56,9 @@ namespace VNamespace{
         await ƒS.update(0.1);
 
         await ƒS.Location.show(backgrounds.BG_Intro_Night4);    
-        await ƒS.update(1, transitions.fade.alpha, 0.05);
+        await ƒS.update(1, transitions.fade.alpha, 0.1);
         await ƒS.Location.show(backgrounds.BG_Intro_Night5);    
-        await ƒS.update(1, transitions.fade.alpha, 0.05);
+        await ƒS.update(1, transitions.fade.alpha, 0.1);
 
         await ƒS.Speech.tell(characters.HER, "BANNING you!!!");
 
