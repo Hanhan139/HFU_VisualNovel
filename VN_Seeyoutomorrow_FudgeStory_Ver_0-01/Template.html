@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Template.css">
+  <script src="Fudge/FudgeCore.js"></script>
+  <script src="FudgeStory/FudgeStory.js"></script>
+  <script src="./Build/Template.js"></script>
+  <title>Fudge Story Template</title>
+ <!-- <splash src="./Assets/Backgrounds/BG_Title_1.png"/> -->
+ <!--GOOGLE FONTS-->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@700&family=Rubik&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <scene>
+
+    <canvas></canvas>
+
+    <speech>
+      <name></name>
+      <content>"See you tomorrow"</content>
+    </speech>
+
+    <dialog type="text">
+
+    </dialog>
+
+  </scene>
+
+  <dialog type="splash" open>
+    <p>
+      <img id="FudgeStoryLogo" theme="light" />
+      <!-- Design your splash screen here. Reposition and rescale the logo above, but do not remove. -->
+      <img id="StartingImage" src="./Assets/Backgrounds/BG_FUD_General.png" alt="Starting Image HERE Look how pretty, 10/10 image">
+    </p>
+  </dialog>
+
+  <!-- Meter bar -->
+  <div type="interface">
+    <input id="scoreForAisaka" type="text" value="Aisaka" disabled>
+    <!-- für value der Skala; Füllung -->
+    <meter id="aisakaMeter" name="aisakaScore" min="0" max="100" disabled></meter>
+  </div>
+
+</body>
+
+</html>
+
+<!--------------------------------------------------------------------------------------- splashscreen -->
